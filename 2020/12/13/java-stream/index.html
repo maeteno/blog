@@ -51,20 +51,20 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Maeteno">
-<meta property="og:url" content="https://blog.maeteno.com/tags/index.html">
+  <meta name="description" content="[TOC] 知识点 集合 集合和Stream的区别   Stream 中间操作 终端操作    集合所有语言中最基础的操作就是对数据集合管理，集合可以理解为语言中对数据结构的实现，例如数组，List，Map 为主要的数据类型。集合就是对数据的储存 集合和Stream的区别我们可以理解为集合是数据的静态储存，Stream是数据的动态处理。 StreamStream 流，描述了数据在处理过程中采用了何">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-stream">
+<meta property="og:url" content="https://blog.maeteno.com/2020/12/13/java-stream/index.html">
 <meta property="og:site_name" content="Maeteno">
+<meta property="og:description" content="[TOC] 知识点 集合 集合和Stream的区别   Stream 中间操作 终端操作    集合所有语言中最基础的操作就是对数据集合管理，集合可以理解为语言中对数据结构的实现，例如数组，List，Map 为主要的数据类型。集合就是对数据的储存 集合和Stream的区别我们可以理解为集合是数据的静态储存，Stream是数据的动态处理。 StreamStream 流，描述了数据在处理过程中采用了何">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-13T05:02:05.321Z">
+<meta property="article:published_time" content="2020-12-13T12:43:34.000Z">
 <meta property="article:modified_time" content="2020-12-13T05:02:05.321Z">
 <meta property="article:author" content="Alan-Fu">
-<meta property="article:tag" content="PHP">
 <meta property="article:tag" content="Java">
-<meta property="article:tag" content="Alan">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.maeteno.com/tags/">
+<link rel="canonical" href="https://blog.maeteno.com/2020/12/13/java-stream/">
 
 
 <script id="page-configurations">
@@ -72,14 +72,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
-    isPage: true,
+    isPost: true,
+    isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签 | Maeteno
-  </title>
+  <title>java-stream | Maeteno</title>
   
 
 
@@ -180,52 +179,256 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">
-</h1>
-
-<div class="post-meta">
+      
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.maeteno.com/2020/12/13/java-stream/">
 
-</div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Alan-Fu">
+      <meta itemprop="description" content="">
+    </span>
 
-</header>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maeteno">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          java-stream
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-13 12:43:34 / 修改时间：05:02:05" itemprop="dateCreated datePublished" datetime="2020-12-13T12:43:34+00:00">2020-12-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              目前共计 3 个标签
+        <p>[TOC]</p>
+<h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ol>
+<li>集合<ol>
+<li>集合和Stream的区别</li>
+</ol>
+</li>
+<li>Stream<ol>
+<li>中间操作</li>
+<li>终端操作</li>
+</ol>
+</li>
+</ol>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>所有语言中最基础的操作就是对数据集合管理，集合可以理解为语言中对数据结构的实现，例如数组，List，Map 为主要的数据类型。<br>集合就是对数据的储存</p>
+<h2 id="集合和Stream的区别"><a href="#集合和Stream的区别" class="headerlink" title="集合和Stream的区别"></a>集合和Stream的区别</h2><p>我们可以理解为集合是数据的静态储存，Stream是数据的动态处理。</p>
+<h1 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h1><p>Stream 流，描述了数据在处理过程中采用了何种方式来处理数据。数据就像水流一样流过一个一个的处理节点。Stream 是对反应式编程的一种实现。</p>
+<p>Stream 只能遍历一次</p>
+<h2 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h2><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>函数接口</th>
+<th>签名</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>filter</td>
+<td>Predicate<T></td>
+<td>T -&gt; boolean</td>
+<td>过滤数据，保留结果为true的数据</td>
+</tr>
+<tr>
+<td>map</td>
+<td>Function&lt;T,R&gt;</td>
+<td>T -&gt; R</td>
+<td>数据处理转换，数据映射，将数据转换为新的数据</td>
+</tr>
+<tr>
+<td>flatMap</td>
+<td>Function&lt;T,Stream<R>&gt;</td>
+<td>(T,Stream<R>) -&gt; Stream<R></td>
+<td></td>
+</tr>
+<tr>
+<td>distinct</td>
+<td>-</td>
+<td>-</td>
+<td>去重</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>-</td>
+<td>-</td>
+<td>限制获取多少个</td>
+</tr>
+<tr>
+<td>skip</td>
+<td>-</td>
+<td>-</td>
+<td>限制跳过多少个</td>
+</tr>
+<tr>
+<td>takeWhile</td>
+<td>Predicate<T></td>
+<td>T -&gt; boolean</td>
+<td>[Java9]</td>
+</tr>
+<tr>
+<td>dropWhile</td>
+<td>Predicate<T></td>
+<td>T -&gt; boolean</td>
+<td>[Java9]</td>
+</tr>
+</tbody></table>
+<h2 id="终端操作"><a href="#终端操作" class="headerlink" title="终端操作"></a>终端操作</h2><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>函数接口</th>
+<th>签名</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>forEach</td>
+<td>Consumer<T></td>
+<td>T -&gt; void</td>
+<td>遍历循环处理</td>
+</tr>
+<tr>
+<td>toArray</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>collect</td>
+<td>Collector&lt;T,A,R&gt;</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>min</td>
+<td>Comparator<T></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>max</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>count</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>findFirst</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>findAny</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>anyMatch</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>allMatch</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>noneMatch</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/12/13/php-json-error/" rel="next" title="PHP中JSON解析错误排查">
+                  <i class="fa fa-chevron-left"></i> PHP中JSON解析错误排查
+                </a>
             </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Java/" style="font-size: 12px; color: #ccc">Java</a> <a href="/tags/Note/" style="font-size: 12px; color: #ccc">Note</a> <a href="/tags/PHP/" style="font-size: 12px; color: #ccc">PHP</a>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/12/13/hexo/" rel="prev" title="Hexo 基础">
+                  Hexo 基础 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
-        
-      </div>
-      
-      
-      
-    </div>
+      </footer>
     
+  </article>
+  
+  
+  
 
-    
-    
-    
   </div>
 
 
@@ -255,6 +458,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合"><span class="nav-number">2.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#集合和Stream的区别"><span class="nav-number">2.1.</span> <span class="nav-text">集合和Stream的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Stream"><span class="nav-number">3.</span> <span class="nav-text">Stream</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#中间操作"><span class="nav-number">3.1.</span> <span class="nav-text">中间操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端操作"><span class="nav-number">3.2.</span> <span class="nav-text">终端操作</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

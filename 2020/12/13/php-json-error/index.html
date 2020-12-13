@@ -51,20 +51,20 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Maeteno">
-<meta property="og:url" content="https://blog.maeteno.com/tags/index.html">
+  <meta name="description" content="今天遇到在接收一个接口返回的时候，对返回的json字符串进行json_decode的时候返回null。但是返回的字符串打印到日志中确实是一个json格式的。在json.cn上也是可以正常格式化的。尝试很多次之后。通过 json_last_error_msg() 拿到了返回错误信息：Syntax error。 通过搜索终于查找到解决方案： 12$content &#x3D; trim($content, &quot;\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP中JSON解析错误排查">
+<meta property="og:url" content="https://blog.maeteno.com/2020/12/13/php-json-error/index.html">
 <meta property="og:site_name" content="Maeteno">
+<meta property="og:description" content="今天遇到在接收一个接口返回的时候，对返回的json字符串进行json_decode的时候返回null。但是返回的字符串打印到日志中确实是一个json格式的。在json.cn上也是可以正常格式化的。尝试很多次之后。通过 json_last_error_msg() 拿到了返回错误信息：Syntax error。 通过搜索终于查找到解决方案： 12$content &#x3D; trim($content, &quot;\">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-13T05:02:05.321Z">
+<meta property="article:published_time" content="2020-12-13T12:21:45.000Z">
 <meta property="article:modified_time" content="2020-12-13T05:02:05.321Z">
 <meta property="article:author" content="Alan-Fu">
 <meta property="article:tag" content="PHP">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="Alan">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.maeteno.com/tags/">
+<link rel="canonical" href="https://blog.maeteno.com/2020/12/13/php-json-error/">
 
 
 <script id="page-configurations">
@@ -72,14 +72,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
-    isPage: true,
+    isPost: true,
+    isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签 | Maeteno
-  </title>
+  <title>PHP中JSON解析错误排查 | Maeteno</title>
   
 
 
@@ -180,52 +179,185 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">
-</h1>
-
-<div class="post-meta">
+      
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.maeteno.com/2020/12/13/php-json-error/">
 
-</div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Alan-Fu">
+      <meta itemprop="description" content="">
+    </span>
 
-</header>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maeteno">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PHP中JSON解析错误排查
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-13 12:21:45 / 修改时间：05:02:05" itemprop="dateCreated datePublished" datetime="2020-12-13T12:21:45+00:00">2020-12-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              目前共计 3 个标签
+        <p>今天遇到在接收一个接口返回的时候，对返回的json字符串进行<code>json_decode</code>的时候返回<code>null</code>。但是返回的字符串打印到日志中确实是一个json格式的。在<code>json.cn</code>上也是可以正常格式化的。尝试很多次之后。通过 <code>json_last_error_msg()</code> 拿到了返回错误信息：<code>Syntax error</code>。 通过搜索终于查找到解决方案：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$content = trim($content, <span class="string">"\xEF\xBB\xBF"</span>);</span><br><span class="line">$data = json_decode($content, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<p>错误的原因是因为返回的字符串带了UTF8编码的BOM头。即<code>\xEF\xBB\xBF</code>，通过<code>trim()</code>将其修剪掉即可。</p>
+<p><strong>总结：</strong></p>
+<p>PHP 中的<code>json_decode</code>,<code>json_encode</code>在遇到错误的时候，不会抛异常或者返回错误信息。我们可以通过<code>json_last_error()</code>获取最新的错误码，或者通过<code>json_last_error_msg()</code>来获取错误信息，再去排查问题。</p>
+<p><strong>JSON error codes</strong></p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Constant</th>
+<th>Meaning</th>
+<th>Availability</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>JSON_ERROR_NONE</td>
+<td>No error has occurred</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>JSON_ERROR_DEPTH</td>
+<td>The maximum stack depth has been exceeded</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>JSON_ERROR_STATE_MISMATCH</td>
+<td>Invalid or malformed JSON</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>JSON_ERROR_CTRL_CHAR</td>
+<td>Control character error, possibly incorrectly encoded</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>JSON_ERROR_SYNTAX</td>
+<td>Syntax error</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>JSON_ERROR_UTF8</td>
+<td>Malformed UTF-8 characters, possibly incorrectly encoded</td>
+<td>PHP 5.3.3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>JSON_ERROR_RECURSION</td>
+<td>One or more recursive references in the value to be encoded</td>
+<td>PHP 5.5.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>JSON_ERROR_INF_OR_NAN</td>
+<td>One or more NAN or INF values in the value to be encoded</td>
+<td>PHP 5.5.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>JSON_ERROR_UNSUPPORTED_TYPE</td>
+<td>A value of a type that cannot be encoded was given</td>
+<td>PHP 5.5.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>JSON_ERROR_INVALID_PROPERTY_NAME</td>
+<td>A property name that cannot be encoded was given</td>
+<td>PHP 7.0.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>JSON_ERROR_UTF16</td>
+<td>Malformed UTF-16 characters, possibly incorrectly encoded</td>
+<td>PHP 7.0.0</td>
+</tr>
+</tbody></table>
+<hr>
+<ul>
+<li><a href="https://www.php.net/manual/en/function.json-last-error.php">json error </a></li>
+<li><a href="https://www.cnblogs.com/qinmengjiao123-123/p/8325646.html">BOM头</a></li>
+<li><a href="https://blog.csdn.net/ghoiufyia/article/details/79158589">json_decode报错</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/PHP/" rel="tag"># PHP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
             </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Java/" style="font-size: 12px; color: #ccc">Java</a> <a href="/tags/Note/" style="font-size: 12px; color: #ccc">Note</a> <a href="/tags/PHP/" style="font-size: 12px; color: #ccc">PHP</a>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/12/13/java-stream/" rel="prev" title="java-stream">
+                  java-stream <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
-        
-      </div>
-      
-      
-      
-    </div>
+      </footer>
     
+  </article>
+  
+  
+  
 
-    
-    
-    
   </div>
 
 
