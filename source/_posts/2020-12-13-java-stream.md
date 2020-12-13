@@ -1,5 +1,5 @@
 ---
-title: java-stream
+title: Java Stream
 tags:
   - Java
 categories: Java
