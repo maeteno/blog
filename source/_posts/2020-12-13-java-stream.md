@@ -5,8 +5,6 @@ tags:
 categories: Java
 date: 2020-12-13 12:43:34
 ---
-[TOC]
-
 # 知识点
 
 1. 集合
