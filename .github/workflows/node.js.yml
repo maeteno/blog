@@ -28,7 +28,7 @@ jobs:
      
     - name: Build Deploy
       env:
-        DEPLOY_KEY: ${{ secrets.TOKEN }}
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
       run: |
         mkdir -p ~/.ssh
         echo '::echo::on'
