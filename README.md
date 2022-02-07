@@ -16,6 +16,7 @@
 - <https://theme-next.org/>
 - <https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/INSTALLATION.md>
 - <https://theme-next.org/docs/>
+- <https://theme-next.iissnan.com/getting-started.html>
 
 
 ## 注意事项

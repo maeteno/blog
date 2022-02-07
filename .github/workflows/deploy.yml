@@ -67,4 +67,5 @@ jobs:
       # 生成并部署
       - name: Deploy
         run: |
+          cp -f _next_theme_config.yml themes/next/_config.yml
           npx hexo deploy --generate
