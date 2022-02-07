@@ -102,4 +102,6 @@ deploy:
   type: git
   repo: git@github.com:maeteno/blog.git
   branch: gh-pages
+  name: Alan.Fu
+  email: ssisoo@live.cn
   message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"

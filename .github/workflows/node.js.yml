@@ -35,10 +35,8 @@ jobs:
         echo "$DEPLOY_KEY"
         echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-      # git config --global user.email "ssisoo@live.cn"
-      # git config --global user.name "GitHub-Action-Reboot"
-      # npm install
-      # npm run clean
-      # npm run build
-      # npm run deploy
+        npm install
+        npm run clean
+        npm run build
+        npm run deploy
 

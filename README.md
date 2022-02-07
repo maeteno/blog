@@ -43,3 +43,6 @@ external_link:
 使用该命令之后，会在`./source/_drafts`目录下生成对应的文件。该目录下的文件不会发布到站点。
 
 当你完成了文章之后，使用`hexo publish 'name'`发布。默认使用`post`模板。
+
+
+https://printempw.github.io/use-github-actions-to-deploy-hexo-blog/
