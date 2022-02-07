@@ -11,7 +11,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,7 +25,15 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install
-    - run: npm run clean
-    - run: npm run build
+      env:
+        DEPLOY_KEY: ${{ secrets.TOKEN }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
+        git config --global user.email "ssisoo@live.cn"
+        git config --global user.name "GitHub-Action-Reboot"
+        npm install
+        npm run clean
+        npm run build
+        npm run deploy
 
