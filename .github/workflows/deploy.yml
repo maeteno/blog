@@ -20,12 +20,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # - name: Checkout theme repo
-      #   uses: actions/checkout@v2
-      #   with:
-      #     repository: prinsss/hexo-theme-murasaki
-      #     ref: master
-      #     path: themes/murasaki
+      - name: Checkout theme repo
+        uses: actions/checkout@v2
+        with:
+          repository: prinsss/hexo-theme-murasaki
+          ref: master
+          path: themes/murasaki
 
       # 这里用的是 Node.js 14.x
       - name: Set up Node.js
@@ -57,12 +57,10 @@ jobs:
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
-          echo '::echo::on'
           sudo timedatectl set-timezone "Asia/Shanghai"
           mkdir -p ~/.ssh
           echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          cat ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
 
       # 生成并部署
