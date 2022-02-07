@@ -27,7 +27,7 @@ jobs:
         cache: 'npm'
       env:
         DEPLOY_KEY: ${{ secrets.TOKEN }}
-      run: |
+    - run: |
         mkdir -p ~/.ssh
         echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
         git config --global user.email "ssisoo@live.cn"
