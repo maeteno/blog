@@ -30,8 +30,7 @@ jobs:
     - run: |
         mkdir -p ~/.ssh
         echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
-        cat ~/.ssh/id_rsa
-        chmod 644 ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
         git config --global user.email "ssisoo@live.cn"
         git config --global user.name "GitHub-Action-Reboot"
         npm install
