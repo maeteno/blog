@@ -31,7 +31,7 @@ jobs:
         DEPLOY_KEY: ${{ secrets.TOKEN }}
       run: |
         mkdir -p ~/.ssh
-        echo '::warning:: $DEPLOY_KEY'
+        echo '::warning:: `echo "$DEPLOY_KEY"`'
         echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
       # git config --global user.email "ssisoo@live.cn"
