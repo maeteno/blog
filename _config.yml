@@ -103,3 +103,4 @@ deploy:
   repo: git@github.com:maeteno/blog.git
   branch: gh-pages
   message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+  token: $GITHUB_TOKEN
