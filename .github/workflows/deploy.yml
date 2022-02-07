@@ -20,12 +20,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      # 使用 actions/checkout 下载主题到 themes 目录下
       - name: Checkout theme repo
         uses: actions/checkout@v2
         with:
-          repository: Lhcfl/hexo-theme-anatolo
+          repository: theme-next/hexo-theme-next
           ref: master
-          path: themes/Anatolo
+          path: themes/next
 
       # 这里用的是 Node.js 14.x
       - name: Set up Node.js
