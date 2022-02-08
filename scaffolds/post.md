@@ -2,6 +2,6 @@
 title: {{ title }}
 date: {{ date }}
 tags: 
-	- Note
+    - Note
 categories: Note
 ---
