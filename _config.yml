@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: MAETENO
+title: MAETENO.com
 subtitle: 'Blog'
 description: ''
 keywords:
@@ -103,3 +103,7 @@ deploy:
   name: Alan.Fu
   email: ssisoo@live.cn
   message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+
+# aomori config
+aomori_logo_typed_animated: true
+aomori_logo: /images/avatar.png
