@@ -17,6 +17,7 @@
 - <https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/INSTALLATION.md>
 - <https://theme-next.org/docs/>
 - <https://theme-next.iissnan.com/getting-started.html>
+- <https://aomori.linhong.me/v/chinese/getting-started/intro#an-zhuang-zhu-ti>
 
 
 ## 注意事项
