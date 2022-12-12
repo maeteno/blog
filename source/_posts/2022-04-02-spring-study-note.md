@@ -1,9 +1,8 @@
 ---
 title: Spring 学习笔记
 tags:
-  - Java
   - Spring
-categories: Note
+categories: Java
 date: 2022-04-02 21:12:57
 ---
 

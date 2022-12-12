@@ -1,7 +1,6 @@
 ---
 title: Java Stream
 tags:
-  - Java
   - Stream
 categories: Java
 date: 2020-12-13 12:43:34

@@ -48,3 +48,6 @@ external_link:
 
 
 https://printempw.github.io/use-github-actions-to-deploy-hexo-blog/
+
+# aomori 可用图标
+- <https://ionic.io/ionicons>

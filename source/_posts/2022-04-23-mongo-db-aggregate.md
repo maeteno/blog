@@ -1,8 +1,13 @@
 ---
 title: MongoDB 聚合查询
+link_refer:
+  -
+    url: https://www.mongodb.com/docs/manual/reference/command/aggregate/#stable-api
+    title: 官方文档
+  -
+    url: https://haicoder.net/mongodb/mongodb-aggregate.html
+    title: 中文资料中文资料
 tags:
-  - DB
-  - Mongo
   - MongoTemplate
 categories: DB
 date: 2022-04-23 20:49:53
@@ -59,7 +64,3 @@ for (let index = 1000; index < 1200; index++) {
 }
 db.getCollection('selection').find();
 ```
-
-# 资料
--  [官方文档](https://www.mongodb.com/docs/manual/reference/command/aggregate/#stable-api)
--  [中文资料](https://haicoder.net/mongodb/mongodb-aggregate.html)
