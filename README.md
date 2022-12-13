@@ -17,7 +17,13 @@
 - <https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/INSTALLATION.md>
 - <https://theme-next.org/docs/>
 - <https://theme-next.iissnan.com/getting-started.html>
+
+主题使用 **aomori**
 - <https://aomori.linhong.me/v/chinese/getting-started/intro#an-zhuang-zhu-ti>
+
+评论
+- <https://disqus.com/api/applications/>
+- <https://valine.js.org/>
 
 
 ## 注意事项
