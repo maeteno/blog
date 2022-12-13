@@ -74,6 +74,8 @@ jobs:
 
       # 生成并部署
       - name: Deploy
+        env:
+          HEXO_ALGOLIA_INDEXING_KEY: ${{ secrets.HEXO_ALGOLIA_INDEXING_KEY }}
         run: |
           npx hexo algolia
           npx hexo deploy --generate
