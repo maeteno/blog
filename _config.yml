@@ -117,7 +117,7 @@ aomori_widgets:
   - recent_posts  # 最新文章
   - archive #文章归档
 aomori_busuanzi: true
-aomori_favicon: 🍀
+aomori_favicon: ☕
 aomori_valine:
   enable: true
   appId: 'ZEL3ybmtK8JgiB5CVO2lUJIM-9Nh9j0Va'
