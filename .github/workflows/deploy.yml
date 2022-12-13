@@ -64,6 +64,7 @@ jobs:
       - name: Set up environment
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          HEXO_ALGOLIA_INDEXING_KEY: ${{ secrets.HEXO_ALGOLIA_INDEXING_KEY }}
         run: |
           sudo timedatectl set-timezone "Asia/Shanghai"
           mkdir -p ~/.ssh
@@ -74,5 +75,5 @@ jobs:
       # 生成并部署
       - name: Deploy
         run: |
-          cp -f _config.yml themes/next/_config.yml
+          hexo algolia
           npx hexo deploy --generate

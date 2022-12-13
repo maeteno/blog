@@ -21,11 +21,15 @@
 主题使用 **aomori**
 - <https://aomori.linhong.me/v/chinese/getting-started/intro#an-zhuang-zhu-ti>
 
-评论
+### 评论
 - <https://console.leancloud.cn/apps>
 - <https://disqus.com/api/applications/>
 - <https://valine.js.org/>
 - <https://console-e1.leancloud.cn/>
+
+### 搜索
+- <https://aomori.linhong.me/v/chinese/features/search>
+- <https://www.algolia.com/>
 
 
 ## 注意事项
