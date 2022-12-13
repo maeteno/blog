@@ -21,19 +21,19 @@ jobs:
         uses: actions/checkout@v2
 
       # 使用 actions/checkout 下载主题到 themes 目录下
-      - name: Checkout theme next
-        uses: actions/checkout@v2
-        with:
-          repository: theme-next/hexo-theme-next
-          ref: master
-          path: themes/next
+      # - name: Checkout theme next
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: theme-next/hexo-theme-next
+      #     ref: master
+      #     path: themes/next
       
-      - name: Checkout theme aomori
-        uses: actions/checkout@v2
-        with:
-          repository: lh1me/hexo-theme-aomori
-          ref: master
-          path: themes/aomori
+      # - name: Checkout theme aomori
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: lh1me/hexo-theme-aomori
+      #     ref: master
+      #     path: themes/aomori
 
       # 这里用的是 Node.js 14.x
       - name: Set up Node.js
@@ -75,5 +75,5 @@ jobs:
       # 生成并部署
       - name: Deploy
         run: |
-          hexo algolia
+          npx hexo algolia
           npx hexo deploy --generate
