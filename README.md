@@ -22,6 +22,7 @@
 - <https://aomori.linhong.me/v/chinese/getting-started/intro#an-zhuang-zhu-ti>
 
 评论
+- <https://console.leancloud.cn/apps>
 - <https://disqus.com/api/applications/>
 - <https://valine.js.org/>
 

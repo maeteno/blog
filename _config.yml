@@ -118,3 +118,7 @@ aomori_widgets:
   - archive #文章归档
 aomori_busuanzi: true
 aomori_favicon: 🍀
+aomori_valine:
+  enable: true
+  appId: 'ZEL3ybmtK8JgiB5CVO2lUJIM-9Nh9j0Va'
+  appKey: 'QGIC8vkWQ2tN5mVDzHhV3cQi'
