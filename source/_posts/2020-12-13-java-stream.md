@@ -1,7 +1,7 @@
 ---
 title: Java Stream
 tags:
-  - Stream
+  - Java Basics
 categories: Java
 date: 2020-12-13 12:43:34
 ---
