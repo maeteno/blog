@@ -123,7 +123,7 @@ aomori_valine:
   appId: 'ZEL3ybmtK8JgiB5CVO2lUJIM-9Nh9j0Va'
   appKey: 'QGIC8vkWQ2tN5mVDzHhV3cQi'
 algolia:
-    applicationID: 'W5B7DM6OIB'
-    apiKey: '7b10ae4a2f240a184604c841cedb3e46'
+    applicationID: 'WGUL5FKJBN'
+    apiKey: 'da489af5f26cc612f4f9c51b6ae92119'
     indexName: 'maeteno-blog'
 aomori_search_algolia: true
