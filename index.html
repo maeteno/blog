@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>MAETENO.com</title>
+
+    <meta name="description" content="MAETENO.com">
+    <meta name="keywords" content="PHP,Java,Alan">
+
+    
+
+
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:locale" content="zh-CN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://blog.maeteno.com/index.html" />
+    <meta property="og:site_name" content="八哥(Buge)" />
+    <meta property="article:publisher" content="" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "",
+            "description": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "八哥(Buge)"
+            },
+        }
+    </script>
+
+
+    
+
+    
+    <meta property="algolia:search" data-application-id="WGUL5FKJBN" data-api-key="da489af5f26cc612f4f9c51b6ae92119" data-index-name="maeteno-blog">
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = false
+        window.aomori = {
+            
+            
+            valine: {
+                enable: true,
+                appId: "ZEL3ybmtK8JgiB5CVO2lUJIM-9Nh9j0Va",
+                appKey: "QGIC8vkWQ2tN5mVDzHhV3cQi",
+                placeholder: "Hello World!",
+                avatar: "",
+                pageSize: "10",
+                lang: "zh-CN",
+                visitor: false,
+                highlight: false,
+                recordIP: false,
+                emojiCDN: "",
+                enableQQ: false,
+                requiredFields: []
+            },
+            
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = true
+
+    </script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="/images/avatar.png" alt="八哥(Buge)">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">MAETENO.com</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">Home</a>
+                
+                <a href="/archives">Archives</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">Home</a>
+                    
+                    <a href="/archives">Archives</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="index">
+  
+    
+      <article
+id="post-redis-cache-uniformity"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2023/01/03/redis-cache-uniformity/">Redis 缓存不一致 - 延迟双删</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Redis 缓存不一致是指实际存储在数据库里的数据和缓存在Redis的数据不一致。而导致这个问题的原因是数据更新所导致的。只有数据发生了更新才有可能导致存储在两个位置（DB和Redis）的数据不一致。那么是不是只有我们在更新数据的时候，同时更新数据库和Redis就可以了呢？看似简单直接的方案往往藏了很多坑。因为这两个数据源的更新并不是原子性的，在并发情况下有诸多问题。为了简化对多数据源的管理，一般的方案都是选择更新数据库而选择让删除缓存使缓存失效。这样在获取数据的时候，会自动去数据库拉取最新的数据。<br>那么是不是我们只要选择更新数据，删除Redis缓存就可以实现缓存一致呢？</p>
+<h1 id="如何删除缓存"><a href="#如何删除缓存" class="headerlink" title="如何删除缓存"></a>如何删除缓存</h1><p>更新数据的时候使缓存失效，从而在需要数据的时候重新从数据库获取最新的数据，来刷新缓存达到缓存一致的目的。这个思路是对的。那么我们应该在什么时候去删除缓存呢？在更新数据库之前还是更新数据库数据之后呢？朴素的直觉告诉我们，肯定是在更新完数据库之后再来删除缓存即可。</p>
+<h2 id="更新后删除缓存"><a href="#更新后删除缓存" class="headerlink" title="更新后删除缓存"></a>更新后删除缓存</h2><p>我们在更新数据库成功之后，再删除缓存。因为两个操作不是原子性的，所以在两个操作之间读取数据的线程依旧会短暂的读取到旧的缓存数据，然而这并不是什么太大的问题。在并发的极端情况下甚至会出现脏数据。<br><img src="/images/%E6%9B%B4%E6%96%B0%E5%90%8E%E5%88%A0%E9%99%A4%E7%BC%93%E5%AD%98.svg" alt="延迟双删"></p>
+<h2 id="并发更新下的脏数据"><a href="#并发更新下的脏数据" class="headerlink" title="并发更新下的脏数据"></a>并发更新下的脏数据</h2><p>当多个线程同时同时更新缓存，同时存在读取数据的线程。每一个更新的操作都可能穿插执行。在某些情况下会生成脏数据。<br><img src="/images/%E6%9B%B4%E6%96%B0%E5%90%8E%E5%88%A0%E9%99%A4%E7%BC%93%E5%AD%98%E6%9E%81%E9%99%90%E6%83%85%E5%86%B5%E4%B8%8B%E7%9A%84%E8%84%8F%E6%95%B0%E6%8D%AE.svg" alt="更新后删除缓存极限情况下的脏数据"></p>
+<h2 id="延迟删除"><a href="#延迟删除" class="headerlink" title="延迟删除"></a>延迟删除</h2><p>生成脏数据的原因是因为在并发情况下，读取数据数据的操作发生在更新数据库数据之前，而写缓存的操作却发生在删除缓存之后。所以我们可以延迟删除缓存操作，将缓存删除的操作延迟到脏数据写缓存之后。这样就可以删除缓存脏数据。延迟删除虽然可以缓解在并发情况下对脏数据的清理。但是也极大的拉长了缓存数据的更新时间。<br><img src="/images/%E5%BB%B6%E8%BF%9F%E5%88%A0%E9%99%A4.svg" alt="延迟删除"></p>
+<h2 id="延迟双删"><a href="#延迟双删" class="headerlink" title="延迟双删"></a>延迟双删</h2><p>我们可以在更新前就删除数据，可以极大的减少缓存数据的延迟。更新前就删除数据，只要数据读取不是发生在更新数据库之前，依旧可以读取到最新的数据。<br><img src="/images/%E5%BB%B6%E8%BF%9F%E5%8F%8C%E5%88%A0-1.svg" alt="延迟双删"></p>
+<p>当出现极端情况下的脏数据时，延迟删除可以补偿对脏数据的删除。从而达到最终的数据一致性。<br><img src="/images/%E5%BB%B6%E8%BF%9F%E5%8F%8C%E5%88%A0-2.svg" alt="延迟双删"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>综合而言，我们可以通过<strong>延迟双删</strong>来解决在并发情况导致的缓存数据不一致的问题</p>
+<ol>
+<li>删除缓存</li>
+<li>更新数据库</li>
+<li>延迟等待一段时间</li>
+<li>重新删除缓存</li>
+</ol>
+<p>归根结底，该问题的本质其实就是<strong>并发问题</strong>。如果我们再极端假设，延迟删除依旧会发生在写数据之前（在多副本的情况下概率更大）。还是会导致数据不一致的问题。我们可以通过加分布式锁来解决问题。</p>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2023-01-03T12:54:34.000Z" itemprop="datePublished">2023-01-03</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/DB/">DB</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+  id="tweet-tweet"
+  class="article article-type-tweet"
+>
+
+    <div class="article-tweet article-type-tweet-inner">
+
+        <ion-icon class="article-tweet-quote" name="flag-outline"></ion-icon>
+
+        <div class="article-tweet-content post-inner-html">
+            
+                <p>在这里给自己立一个flag，2023年开始好好的打理自己的博客。争取以后可以写到简历里。</p>
+
+            
+        </div>
+
+        <footer class="article-footer">
+          <div class="article-more-info">
+            <a class="article-tweet-common" href="/2022/12/13/tweet/">评论</a>
+            <div class="article-date">
+  <time datetime="2022-12-13T04:42:18.000Z" itemprop="datePublished">2022-12-13</time>
+</div>
+            
+                <div class="article-category">
+                <a class="article-category-link" href="/categories/Tweet/">Tweet</a>
+                </div>
+            
+            
+            </div>
+        </footer>
+
+        <div class="article-badge">
+            
+            
+        </div>
+
+    </div>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-mongo-db-aggregate"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2022/04/23/mongo-db-aggregate/">MongoDB 聚合查询</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Mongo 的 aggregate 类似Java的Stream。是一种流式的操作，和 Linux 的管道类似。aggregate 的参数是一个数组。数据依次通过数组中的每一个操作，传递到下一个操作。所以数组中的操作顺序对结果是有影响的。其中每一个操作的入参都是上一个操作的出参。数组中的每一个操作就类似 Java Stream 中的 Map 操作。<br>其中的操作可以理解为是一种DSL。<code>$</code>开头的对象key就是一个动作，表示需要执行的行为。而对象值里的<code>$</code>就是一种取值行为。<br>另外一点就是。对 MongoDB 的所有操作需要跳出SQL查询对我们的影响。不能以结构化查询语句的思维去考虑 MongoDB 的查询。可理解为 MongoDB 是使用一种披着JS外衣的DSL查询。它的查询更贴近JS，而不是SQL。</p>
+<h1 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h1><h2 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h2><pre><code class="js">// 准备数据
+for (let index = 1000; index &lt; 1200; index++) &#123;
+    db.getCollection(&#39;student&#39;).insertOne(&#123;
+        no: index,
+        name: `STU-$&#123;index&#125;`,
+    &#125;)
+&#125;
+db.getCollection(&#39;student&#39;).find();
+
+// course
+for (let index = 1; index &lt; 6; index++) &#123;
+    db.getCollection(&#39;course&#39;).insertOne(&#123;
+        no: `course-no-$&#123;index&#125;`,
+        name: `course-name-$&#123;index&#125;`
+    &#125;)
+&#125;
+
+db.getCollection(&#39;course&#39;).find();
+
+// selection
+for (let index = 1000; index &lt; 1200; index++) &#123;
+    for (let i = 0; i &lt; 3; i++) &#123;
+        let no = Math.floor(Math.random() * 5) + 1;
+        db.getCollection(&#39;selection&#39;).updateOne(
+            &#123;
+                &#39;student_no&#39;: index,
+                &#39;course_no&#39;: `course-no-$&#123;no&#125;`
+            &#125;,
+            &#123;
+                $set: &#123;
+                    &#39;student_no&#39;: index,
+                    &#39;course_no&#39;: `course-no-$&#123;no&#125;`
+                &#125;
+            &#125;,
+            &#123;
+                upsert: true,
+            &#125;
+        )
+    &#125;
+&#125;
+db.getCollection(&#39;selection&#39;).find();
+</code></pre>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-04-23T12:49:53.000Z" itemprop="datePublished">2022-04-23</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/DB/">DB</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoTemplate/" rel="tag">MongoTemplate</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-servlet"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2022/04/03/servlet/">Java Servlet</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="从程序说起"><a href="#从程序说起" class="headerlink" title="从程序说起"></a>从程序说起</h2><p>什么是程序？程序就是对数据的处理，然后输出结果。一个程序可以没有输入（可以理解为已经将输入包含在程序内部了），但是一定需要一个输出。这个输出可以是修改了某个设置，或者打印一个字符串。包括其他的一些音频等数据信息。<br>对于一个开发语言而言，语言本身只包含逻辑处理相关的，以及如何操作内存中的数据。高级语言会封装这些针对内存的数据操作，例如接受一个输入或者向屏幕输出。<br>例如 Java 的 CLI 程序。<code>System.in.read()</code> 就是输入，<code>System.out.println()</code>就是针对命令行的输出。</p>
+<p>Servlet 对于 Java 而言。相当于 CGI 对 PHP。Tomcat 与 Servlet 的关系，相当于 Nginx 与 PHP-FPM。<br>Nginx + PHP-FPM(PHP FastCGI Process Manager)<br>Tomcat + Servlet</p>
+<h1 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h1><ul>
+<li><a href="http://c.biancheng.net/servlet2/what-is-servlet.html">Servlet 到底是什么</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1266264743830016">Servlet 开发</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304265949708322">Servlet 入门</a></li>
+<li><a href="https://www.cnblogs.com/shawshawwan/p/9002126.html">Servlet／Tomcat&#x2F; Spring 之间的关系</a></li>
+<li><a href="https://blog.csdn.net/yuanyuan214365/article/details/78309281">SpringMVC框架与Servlet介绍</a></li>
+<li><a href="https://www.cnblogs.com/followyou/p/9460058.html">PHP-FPM详解</a></li>
+</ul>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-04-03T05:04:54.000Z" itemprop="datePublished">2022-04-03</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/Java/">Java</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Basics/" rel="tag">Java Basics</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+  id="tweet-spring-diff"
+  class="article article-type-tweet"
+>
+
+    <div class="article-tweet article-type-tweet-inner">
+
+        <ion-icon class="article-tweet-quote" name="balloon-outline"></ion-icon>
+
+        <div class="article-tweet-content post-inner-html">
+            
+                <h1 id="Spring、Spring-Boot、Spring-Cloud-的区别"><a href="#Spring、Spring-Boot、Spring-Cloud-的区别" class="headerlink" title="Spring、Spring Boot、Spring Cloud 的区别"></a>Spring、Spring Boot、Spring Cloud 的区别</h1><ul>
+<li>Spring 就是一个框架，支持Ioc，AOP的框架。可以简化工程类代码</li>
+<li>Spring Boot 简化了 Spring 的配置，简单的说就是预配置的Spring</li>
+<li>Spring Cloud 是一套 Spring微服务解决方案。提供了基于微服务的基础组件，例如服务发现，网关等</li>
+</ul>
+
+            
+        </div>
+
+        <footer class="article-footer">
+          <div class="article-more-info">
+            <a class="article-tweet-common" href="/2022/04/02/spring-diff/">评论</a>
+            <div class="article-date">
+  <time datetime="2022-04-02T13:12:57.000Z" itemprop="datePublished">2022-04-02</time>
+</div>
+            
+                <div class="article-category">
+                <a class="article-category-link" href="/categories/Java/">Java</a>
+                </div>
+            
+            
+                <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+                </div>
+            
+            </div>
+        </footer>
+
+        <div class="article-badge">
+            
+            
+        </div>
+
+    </div>
+
+</article>
+
+    
+  
+
+  
+    <nav class="pagination">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a>
+    </nav>
+  
+</div>
+
+                </section>
+            </section>
+
+            
+            <aside class="sidebar sidebar-search-fix">
+                
+
+    <div class="search">
+    <div class="has-icon-right">
+        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
+        <div class="form-icon">
+            <ion-icon name="search"></ion-icon>
+        </div>
+    </div>
+    <div class="search-result" id="search-ps"></div>
+</div>
+
+
+<div class="widget" id="widget">
+    
+      
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tweet/">Tweet</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Basics/" rel="tag">Java Basics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoTemplate/" rel="tag">MongoTemplate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Solution/" rel="tag">Solution</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2023/01/03/redis-cache-uniformity/">Redis 缓存不一致 - 延迟双删</a>
+          </li>
+        
+          <li>
+            <a href="/2022/12/13/tweet/">2023年的Flag</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/23/mongo-db-aggregate/">MongoDB 聚合查询</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/03/servlet/">Java Servlet</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/02/spring-diff/">Spring 学习随记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            MAETENO.com &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

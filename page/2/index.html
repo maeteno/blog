@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>MAETENO.com</title>
+
+    <meta name="description" content="MAETENO.com">
+    <meta name="keywords" content="PHP,Java,Alan">
+
+    
+
+
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:locale" content="zh-CN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://blog.maeteno.com/page/2/index.html" />
+    <meta property="og:site_name" content="八哥(Buge)" />
+    <meta property="article:publisher" content="" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "",
+            "description": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "八哥(Buge)"
+            },
+        }
+    </script>
+
+
+    
+
+    
+    <meta property="algolia:search" data-application-id="WGUL5FKJBN" data-api-key="da489af5f26cc612f4f9c51b6ae92119" data-index-name="maeteno-blog">
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = false
+        window.aomori = {
+            
+            
+            valine: {
+                enable: true,
+                appId: "ZEL3ybmtK8JgiB5CVO2lUJIM-9Nh9j0Va",
+                appKey: "QGIC8vkWQ2tN5mVDzHhV3cQi",
+                placeholder: "Hello World!",
+                avatar: "",
+                pageSize: "10",
+                lang: "zh-CN",
+                visitor: false,
+                highlight: false,
+                recordIP: false,
+                emojiCDN: "",
+                enableQQ: false,
+                requiredFields: []
+            },
+            
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = true
+
+    </script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="/images/avatar.png" alt="八哥(Buge)">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">MAETENO.com</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">Home</a>
+                
+                <a href="/archives">Archives</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">Home</a>
+                    
+                    <a href="/archives">Archives</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="index">
+  
+    
+      <article
+id="post-java-stream"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/12/13/java-stream/">Java Stream</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ol>
+<li>集合<ol>
+<li>集合和Stream的区别</li>
+</ol>
+</li>
+<li>Stream<ol>
+<li>中间操作</li>
+<li>终端操作</li>
+</ol>
+</li>
+</ol>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>所有语言中最基础的操作就是对数据集合管理，集合可以理解为语言中对数据结构的实现，例如数组，List，Map 为主要的数据类型。<br>集合就是对数据的储存</p>
+<h2 id="集合和Stream的区别"><a href="#集合和Stream的区别" class="headerlink" title="集合和Stream的区别"></a>集合和Stream的区别</h2><p>我们可以理解为集合是数据的静态储存，Stream是数据的动态处理。</p>
+<h1 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h1><p>Stream 流，描述了数据在处理过程中采用了何种方式来处理数据。数据就像水流一样流过一个一个的处理节点。Stream 是对反应式编程的一种实现。</p>
+<p>Stream 只能遍历一次</p>
+<h2 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h2><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>函数接口</th>
+<th>签名</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>filter</td>
+<td>Predicate<T></td>
+<td>T -&gt; boolean</td>
+<td>过滤数据，保留结果为true的数据</td>
+</tr>
+<tr>
+<td>map</td>
+<td>Function&lt;T,R&gt;</td>
+<td>T -&gt; R</td>
+<td>数据处理转换，数据映射，将数据转换为新的数据</td>
+</tr>
+<tr>
+<td>flatMap</td>
+<td>Function&lt;T,Stream<R>&gt;</td>
+<td>(T,Stream<R>) -&gt; Stream<R></td>
+<td></td>
+</tr>
+<tr>
+<td>distinct</td>
+<td>-</td>
+<td>-</td>
+<td>去重</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>-</td>
+<td>-</td>
+<td>限制获取多少个</td>
+</tr>
+<tr>
+<td>skip</td>
+<td>-</td>
+<td>-</td>
+<td>限制跳过多少个</td>
+</tr>
+<tr>
+<td>takeWhile</td>
+<td>Predicate<T></td>
+<td>T -&gt; boolean</td>
+<td>[Java9]</td>
+</tr>
+<tr>
+<td>dropWhile</td>
+<td>Predicate<T></td>
+<td>T -&gt; boolean</td>
+<td>[Java9]</td>
+</tr>
+</tbody></table>
+<h2 id="终端操作"><a href="#终端操作" class="headerlink" title="终端操作"></a>终端操作</h2><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>函数接口</th>
+<th>签名</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>forEach</td>
+<td>Consumer<T></td>
+<td>T -&gt; void</td>
+<td>遍历循环处理</td>
+</tr>
+<tr>
+<td>toArray</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>collect</td>
+<td>Collector&lt;T,A,R&gt;</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>min</td>
+<td>Comparator<T></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>max</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>count</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>findFirst</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>findAny</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>anyMatch</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>allMatch</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>noneMatch</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-12-13T04:43:34.000Z" itemprop="datePublished">2020-12-13</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/Java/">Java</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Basics/" rel="tag">Java Basics</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-php-json-error"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/12/13/php-json-error/">PHP中JSON解析错误排查</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>今天遇到在接收一个接口返回的时候，对返回的json字符串进行<code>json_decode</code>的时候返回<code>null</code>。但是返回的字符串打印到日志中确实是一个json格式的。在<code>json.cn</code>上也是可以正常格式化的。尝试很多次之后。通过 <code>json_last_error_msg()</code> 拿到了返回错误信息：<code>Syntax error</code>。 通过搜索终于查找到解决方案：</p>
+<pre><code class="php">$content = trim($content, &quot;\xEF\xBB\xBF&quot;);
+$data = json_decode($content, true);
+</code></pre>
+<p>错误的原因是因为返回的字符串带了UTF8编码的BOM头。即<code>\xEF\xBB\xBF</code>，通过<code>trim()</code>将其修剪掉即可。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>PHP 中的<code>json_decode</code>,<code>json_encode</code>在遇到错误的时候，不会抛异常或者返回错误信息。我们可以通过<code>json_last_error()</code>获取最新的错误码，或者通过<code>json_last_error_msg()</code>来获取错误信息，再去排查问题。</p>
+<h2 id="JSON-error-codes"><a href="#JSON-error-codes" class="headerlink" title="JSON error codes"></a>JSON error codes</h2><table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Constant</th>
+<th>Meaning</th>
+<th>Availability</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>JSON_ERROR_NONE</td>
+<td>No error has occurred</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>JSON_ERROR_DEPTH</td>
+<td>The maximum stack depth has been exceeded</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>JSON_ERROR_STATE_MISMATCH</td>
+<td>Invalid or malformed JSON</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>JSON_ERROR_CTRL_CHAR</td>
+<td>Control character error, possibly incorrectly encoded</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>JSON_ERROR_SYNTAX</td>
+<td>Syntax error</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>JSON_ERROR_UTF8</td>
+<td>Malformed UTF-8 characters, possibly incorrectly encoded</td>
+<td>PHP 5.3.3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>JSON_ERROR_RECURSION</td>
+<td>One or more recursive references in the value to be encoded</td>
+<td>PHP 5.5.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>JSON_ERROR_INF_OR_NAN</td>
+<td>One or more NAN or INF values in the value to be encoded</td>
+<td>PHP 5.5.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>JSON_ERROR_UNSUPPORTED_TYPE</td>
+<td>A value of a type that cannot be encoded was given</td>
+<td>PHP 5.5.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>JSON_ERROR_INVALID_PROPERTY_NAME</td>
+<td>A property name that cannot be encoded was given</td>
+<td>PHP 7.0.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>JSON_ERROR_UTF16</td>
+<td>Malformed UTF-16 characters, possibly incorrectly encoded</td>
+<td>PHP 7.0.0</td>
+</tr>
+</tbody></table>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://www.php.net/manual/en/function.json-last-error.php">json error </a></li>
+<li><a href="https://www.cnblogs.com/qinmengjiao123-123/p/8325646.html">BOM头</a></li>
+<li><a href="https://blog.csdn.net/ghoiufyia/article/details/79158589">json_decode报错</a></li>
+</ul>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-12-13T04:21:45.000Z" itemprop="datePublished">2020-12-13</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/PHP/">PHP</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Solution/" rel="tag">Solution</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+  id="tweet-hexo"
+  class="article article-type-tweet"
+>
+
+    <div class="article-tweet article-type-tweet-inner">
+
+        <ion-icon class="article-tweet-quote" name="document-text-outline"></ion-icon>
+
+        <div class="article-tweet-content post-inner-html">
+            
+                <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+            
+        </div>
+
+        <footer class="article-footer">
+          <div class="article-more-info">
+            <a class="article-tweet-common" href="/2019/12/13/hexo/">评论</a>
+            <div class="article-date">
+  <time datetime="2019-12-13T04:43:34.000Z" itemprop="datePublished">2019-12-13</time>
+</div>
+            
+                <div class="article-category">
+                <a class="article-category-link" href="/categories/Tweet/">Tweet</a>
+                </div>
+            
+            
+            </div>
+        </footer>
+
+        <div class="article-badge">
+            
+            
+        </div>
+
+    </div>
+
+</article>
+
+    
+  
+
+  
+    <nav class="pagination">
+        <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+  
+</div>
+
+                </section>
+            </section>
+
+            
+            <aside class="sidebar sidebar-search-fix">
+                
+
+    <div class="search">
+    <div class="has-icon-right">
+        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
+        <div class="form-icon">
+            <ion-icon name="search"></ion-icon>
+        </div>
+    </div>
+    <div class="search-result" id="search-ps"></div>
+</div>
+
+
+<div class="widget" id="widget">
+    
+      
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DB/">DB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tweet/">Tweet</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Basics/" rel="tag">Java Basics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoTemplate/" rel="tag">MongoTemplate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Solution/" rel="tag">Solution</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2023/01/03/redis-cache-uniformity/">Redis 缓存不一致 - 延迟双删</a>
+          </li>
+        
+          <li>
+            <a href="/2022/12/13/tweet/">2023年的Flag</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/23/mongo-db-aggregate/">MongoDB 聚合查询</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/03/servlet/">Java Servlet</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/02/spring-diff/">Spring 学习随记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            MAETENO.com &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
