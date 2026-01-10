@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Maeteno"
   text: "Maeteno's Blog"
-  tagline: My great project tagline
+  tagline: Share technology, record growth
   actions:
     - theme: brand
       text: Development
@@ -15,10 +15,10 @@ hero:
       link: /en/api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Technical Sharing
+    details: Share technical problems and solutions encountered during development
+  - title: Practical Experience
+    details: Record experience summaries and best practices in project practice
+  - title: Continuous Learning
+    details: Keep curiosity about new technologies, continuous learning and progress
 ---
