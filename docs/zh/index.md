@@ -15,7 +15,7 @@ hero:
       link: /zh/development/redis-cache-uniformity
     - theme: alt
       text: 关于我
-      link: /zh/about/about
+      link: /zh/about/
 
 features:
   - icon: 💡

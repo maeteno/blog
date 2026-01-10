@@ -1,4 +1,9 @@
-# About
+---
+title: About
+category: about
+---
+
+# {{ $frontmatter.title }}
 
 ## Introduction
 

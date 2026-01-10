@@ -1,4 +1,9 @@
-# 关于本站
+---
+title: 关于本站
+category: about
+---
+
+# {{ $frontmatter.title }}
 
 ## 简介
 

@@ -1,1 +1,6 @@
-# Long Journey
+---
+title: Long Journey
+category: articles
+---
+
+# {{ $frontmatter.title }}

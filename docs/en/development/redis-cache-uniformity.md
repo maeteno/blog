@@ -6,7 +6,7 @@ categories: DB
 date: 2023-01-03 20:54:34
 ---
 
-# Redis Cache Inconsistency - Delayed Double Deletion
+# {{ $frontmatter.title }}
 
 ## Overview
 Redis cache inconsistency refers to the mismatch between data actually stored in the database and data cached in Redis. The root cause of this problem is data updates. Only when data is updated can it lead to inconsistency between data stored in two locations (DB and Redis). So, is it sufficient to simply update both the database and Redis when updating data? This seemingly straightforward solution often has many pitfalls. Since updates to these two data sources are not atomic, there are numerous issues under concurrent conditions. To simplify the management of multiple data sources, the general approach is to update the database and delete the cache to invalidate it. This way, when data is retrieved, it will automatically fetch the latest data from the database.

@@ -1,1 +1,6 @@
-# 千里之行
+---
+title: 千里之行
+category: articles
+---
+
+# {{ $frontmatter.title }}
