@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: API Examples
       link: /api-examples
+    - theme: alt
+      text: Redis Cache Uniformity
+      link: /2023-01/redis-cache-uniformity
 
 features:
   - title: Feature A
