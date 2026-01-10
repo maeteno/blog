@@ -6,7 +6,8 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     nav: [
       { text: '首页', link: '/zh/' },
       { text: '开发', link: '/zh/development/redis-cache-uniformity' },
-      { text: '关于', link: '/zh/about/about' },
+      { text: '文章', link: '/zh/articles/' },
+      { text: '关于', link: '/zh/about/' },
 
     ],
     sidebar: {
@@ -24,12 +25,19 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           ]
         }
       ],
+      "/zh/articles/": [
+        {
+          text: '文章',
+          link: '/zh/articles/',
+          items: [
+            { text: '千里之行', link: '/zh/articles/long-journey' }
+          ]
+        }
+      ],
       "/zh/about/": [
         {
           text: '关于',
-          items: [
-            { text: '关于', link: '/zh/about/about' }
-          ]
+          link: '/zh/about/'
         }
       ]
     },

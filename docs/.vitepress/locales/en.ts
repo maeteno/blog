@@ -6,7 +6,8 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     nav: [
       { text: 'Home', link: '/en/' },
       { text: 'Development', link: '/en/development/redis-cache-uniformity' },
-      { text: 'About', link: '/en/about/about' }
+      { text: 'Articles', link: '/en/articles/' },
+      { text: 'About', link: '/en/about/' }
     ],
     sidebar: {
       "/en/development/": [
@@ -23,12 +24,19 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           ]
         }
       ],
+      "/en/articles/": [
+        {
+          text: 'Articles',
+          link: '/en/articles/',
+          items: [
+            { text: 'Long Journey', link: '/en/articles/long-journey' }
+          ]
+        }
+      ],
       "/en/about/": [
         {
           text: 'About',
-          items: [
-            { text: 'About', link: '/en/about/about' }
-          ]
+          link: '/en/about/'
         }
       ]
     },
