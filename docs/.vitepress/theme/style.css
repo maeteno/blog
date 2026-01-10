@@ -96,3 +96,74 @@
   transform: scale(1.05);
   box-shadow: var(--logo-shadow-hover);
 }
+
+/* Home Page Enhancements */
+/* Hero Section - Avatar with subtle rounded corners */
+.VPImage.image-src img {
+  border-radius: 12px !important;
+}
+
+.VPImage.image-src {
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+/* Features Section */
+.VPFeature {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  padding: 24px;
+  height: 100%;
+}
+
+.VPFeature:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dark .VPFeature:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.VPFeature .icon {
+  font-size: 2.5em;
+  margin-bottom: 16px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.VPFeature:hover .icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.VPFeature .title {
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-bottom: 12px;
+  color: var(--vp-c-brand-1);
+}
+
+.VPFeature .details {
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .VPFeature {
+    padding: 20px;
+  }
+
+  .VPFeature .icon {
+    font-size: 2em;
+  }
+}

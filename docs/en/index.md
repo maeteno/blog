@@ -4,21 +4,36 @@ layout: home
 
 hero:
   name: "Maeteno"
-  text: "Maeteno's Blog"
-  tagline: Share technology, record growth
+  text: "Tech Blog"
+  tagline: Share Tech Insights · Document Growth Journey · Explore Technology Frontiers
+  image:
+    src: /icon/avatar.png
+    alt: Maeteno
   actions:
     - theme: brand
-      text: Development
+      text: Start Reading
       link: /en/development/redis-cache-uniformity
     - theme: alt
-      text: About
+      text: About Me
       link: /en/about/about
 
 features:
-  - title: Technical Sharing
-    details: Share technical problems and solutions encountered during development
-  - title: Practical Experience
-    details: Record experience summaries and best practices in project practice
-  - title: Continuous Learning
-    details: Keep curiosity about new technologies, continuous learning and progress
+  - icon: 💡
+    title: Technical Sharing
+    details: Dive deep into cutting-edge technologies, share development insights and help developers solve real-world problems
+  - icon: 🚀
+    title: Project Practice
+    details: Document real-world project experiences, summarize best practices in architecture design and performance optimization
+  - icon: 📚
+    title: Continuous Learning
+    details: Maintain passion and curiosity for technology, continuously learn new knowledge and enhance technical depth and breadth
+  - icon: 🎯
+    title: Problem Solving
+    details: Record challenges encountered in development and their solutions, providing references and inspiration for others
+  - icon: 🔧
+    title: Tool Sharing
+    details: Recommend efficient development tools and techniques to boost productivity and make programming more enjoyable
+  - icon: 🌱
+    title: Growth Journey
+    details: Document every step of technical growth, witnessing the transformation from beginner to expert
 ---
