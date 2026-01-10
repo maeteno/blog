@@ -4,22 +4,22 @@ layout: home
 
 hero:
   name: "Maeteno"
-  text: "Maeteno's Blog"
-  tagline: My great project tagline
+  text: "Maeteno 的博客"
+  tagline: 分享技术，记录成长
   actions:
     - theme: brand
-      text: Development
+      text: 开发
       link: /development/redis-cache-uniformity
     - theme: alt
-      text: API Examples
+      text: API 示例
       link: /api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 技术分享
+    details: 分享开发过程中遇到的技术问题和解决方案
+  - title: 实践经验
+    details: 记录项目实践中的经验总结和最佳实践
+  - title: 持续学习
+    details: 保持对新技术的好奇心，不断学习和进步
 ---
 

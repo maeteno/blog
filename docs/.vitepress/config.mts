@@ -4,29 +4,72 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Maeteno",
   description: "Maeteno's Blog",
+
+  // 国际化配置
+  locales: {
+    root: {
+      label: '简体中文',
+      lang: 'zh-CN',
+      themeConfig: {
+        nav: [
+          { text: '首页', link: '/' },
+          { text: '开发', link: '/development/redis-cache-uniformity' }
+        ],
+        sidebar: [
+          {
+            text: '开发',
+            items: [
+              { text: 'Redis 缓存一致性', link: '/development/redis-cache-uniformity' }
+            ]
+          },
+          {
+            text: '示例',
+            items: [
+              { text: 'Markdown 示例', link: '/markdown-examples' },
+              { text: 'API 示例', link: '/api-examples' }
+            ]
+          }
+        ],
+        outline: {
+          level: [2, 3],
+          label: '目录'
+        }
+      }
+    },
+    en: {
+      label: 'English',
+      lang: 'en-US',
+      link: '/en/',
+      themeConfig: {
+        nav: [
+          { text: 'Home', link: '/en/' },
+          { text: 'Development', link: '/en/development/redis-cache-uniformity' }
+        ],
+        sidebar: [
+          {
+            text: 'Development',
+            items: [
+              { text: 'Redis Cache Uniformity', link: '/en/development/redis-cache-uniformity' }
+            ]
+          },
+          {
+            text: 'Examples',
+            items: [
+              { text: 'Markdown Examples', link: '/en/markdown-examples' },
+              { text: 'Runtime API Examples', link: '/en/api-examples' }
+            ]
+          }
+        ],
+        outline: {
+          level: [2, 3],
+          label: 'On this page'
+        }
+      }
+    }
+  },
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Development', link: '/development/redis-cache-uniformity' }
-    ],
-
-    sidebar: [
-      {
-        text: 'Development',
-        items: [
-          { text: 'Redis Cache Uniformity', link: '/development/redis-cache-uniformity' }
-        ]
-      },
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
-
     socialLinks: [
       { icon: 'github', link: 'https://github.com/maeteno/blog' }
     ],
