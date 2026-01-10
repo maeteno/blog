@@ -18,10 +18,9 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           ]
         },
         {
-          text: '示例',
+          text: 'Spring Boot',
           items: [
-            { text: 'Markdown 示例', link: '/zh/development/examples/markdown-examples' },
-            { text: 'API 示例', link: '/zh/development/examples/api-examples' }
+            { text: 'Spring Boot Starter 开发', link: '/zh/development/spring-boot/spring-boot-starter-dev' }
           ]
         }
       ],

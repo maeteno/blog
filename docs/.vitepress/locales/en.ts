@@ -17,10 +17,9 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           ]
         },
         {
-          text: 'Examples',
+          text: 'Spring Boot',
           items: [
-            { text: 'Markdown Examples', link: '/en/development/examples/markdown-examples' },
-            { text: 'Runtime API Examples', link: '/en/development/examples/api-examples' }
+            { text: 'Spring Boot Starter Development', link: '/en/development/spring-boot/spring-boot-starter-dev' }
           ]
         }
       ],
