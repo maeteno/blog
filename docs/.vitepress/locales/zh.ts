@@ -14,6 +14,7 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
       "/zh/development/": [
         {
           text: '开发',
+          link: '/zh/development/',
           items: [
             { text: 'Redis 缓存一致性', link: '/zh/development/redis-cache-uniformity' }
           ]

@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 开始阅读
-      link: /zh/development/redis-cache-uniformity
+      link: /zh/development/
     - theme: alt
       text: 关于我
       link: /zh/about/
@@ -20,6 +20,7 @@ hero:
 features:
   - icon: 💡
     title: 技术分享
+    link: /zh/development
     details: 深入探讨前沿技术，分享开发实践中的经验与思考，帮助开发者解决实际问题
   - icon: 🚀
     title: 项目实践

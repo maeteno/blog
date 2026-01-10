@@ -13,6 +13,7 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
       "/en/development/": [
         {
           text: 'Development',
+          link: '/en/development/',
           items: [
             { text: 'Redis Cache Uniformity', link: '/en/development/redis-cache-uniformity' }
           ]

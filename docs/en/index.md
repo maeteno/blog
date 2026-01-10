@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: Start Reading
-      link: /en/development/redis-cache-uniformity
+      link: /en/development/
     - theme: alt
       text: About Me
       link: /en/about/
@@ -20,6 +20,7 @@ hero:
 features:
   - icon: 💡
     title: Technical Sharing
+    link: /en/development
     details: Dive deep into cutting-edge technologies, share development insights and help developers solve real-world problems
   - icon: 🚀
     title: Project Practice
