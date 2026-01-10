@@ -1,25 +1,18 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
-
-hero:
-  name: "Maeteno"
-  text: "Maeteno 的博客"
-  tagline: 分享技术，记录成长
-  actions:
-    - theme: brand
-      text: 开发
-      link: /development/redis-cache-uniformity
-    - theme: alt
-      text: API 示例
-      link: /api-examples
-
-features:
-  - title: 技术分享
-    details: 分享开发过程中遇到的技术问题和解决方案
-  - title: 实践经验
-    details: 记录项目实践中的经验总结和最佳实践
-  - title: 持续学习
-    details: 保持对新技术的好奇心，不断学习和进步
 ---
 
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  window.location.href = '/zh/'
+})
+</script>
+
+<div style="text-align: center; padding: 2rem;">
+  <p>正在跳转到中文页面...</p>
+  <p>Redirecting to Chinese version...</p>
+  <p><a href="/zh/">点击这里</a> 如果没有自动跳转</p>
+  <p><a href="/zh/">Click here</a> if not redirected automatically</p>
+</div>
