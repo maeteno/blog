@@ -3,19 +3,16 @@
 layout: home
 
 hero:
-  name: "Blog"
-  text: "Blog"
+  name: "Maeteno"
+  text: "Maeteno's Blog"
   tagline: My great project tagline
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Development
+      link: /development/redis-cache-uniformity
     - theme: alt
       text: API Examples
       link: /api-examples
-    - theme: alt
-      text: Redis Cache Uniformity
-      link: /2023-01/redis-cache-uniformity
 
 features:
   - title: Feature A

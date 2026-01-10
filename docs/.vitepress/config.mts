@@ -2,16 +2,22 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Blog",
-  description: "Blog",
+  title: "Maeteno",
+  description: "Maeteno's Blog",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Development', link: '/development/redis-cache-uniformity' }
     ],
 
     sidebar: [
+      {
+        text: 'Development',
+        items: [
+          { text: 'Redis Cache Uniformity', link: '/development/redis-cache-uniformity' }
+        ]
+      },
       {
         text: 'Examples',
         items: [
@@ -22,7 +28,11 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+      { icon: 'github', link: 'https://github.com/maeteno/blog' }
+    ],
+
+    search: {
+      provider: 'local'
+    }
   }
 })
