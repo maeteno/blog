@@ -11,8 +11,8 @@ hero:
       text: Development
       link: /en/development/redis-cache-uniformity
     - theme: alt
-      text: API Examples
-      link: /en/api-examples
+      text: About
+      link: /en/about/about
 
 features:
   - title: Technical Sharing

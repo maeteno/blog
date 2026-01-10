@@ -11,8 +11,8 @@ hero:
       text: 开发
       link: /zh/development/redis-cache-uniformity
     - theme: alt
-      text: API 示例
-      link: /zh/api-examples
+      text: 关于
+      link: /zh/about/about
 
 features:
   - title: 技术分享
