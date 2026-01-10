@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: 开发
-      link: /development/redis-cache-uniformity
+      link: /zh/development/redis-cache-uniformity
     - theme: alt
       text: API 示例
-      link: /api-examples
+      link: /zh/api-examples
 
 features:
   - title: 技术分享
