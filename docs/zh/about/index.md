@@ -7,7 +7,7 @@ category: about
 
 ## 简介
 
-这是 Maeteno 的个人技术博客。
+这是 Maeteno 的个人技术博客。 
 
 ## 内容
 

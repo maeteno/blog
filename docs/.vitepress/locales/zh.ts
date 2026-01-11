@@ -21,6 +21,7 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         },
         {
           text: 'Spring Boot',
+          link: '/development/spring-boot/',
           items: [
             { text: 'Spring Boot Starter 开发', link: '/development/spring-boot/spring-boot-starter-dev' }
           ]
@@ -37,7 +38,7 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
       ],
       "/about/": [
         {
-          text: '关于',
+          text: '关于本站',
           link: '/about/'
         }
       ]
