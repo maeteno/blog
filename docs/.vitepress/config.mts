@@ -7,6 +7,14 @@ export default defineConfig({
   title: "Maeteno",
   description: "Maeteno's Blog",
 
+  rewrites: {
+    'zh/:rest*': ':rest*'
+  },
+
+  lastUpdated: true,
+  cleanUrls: true,
+  metaChunk: true,
+
   // 站点图标
   head: [
     ['link', { rel: 'icon', href: '/icon/avatar.png' }]
@@ -14,7 +22,7 @@ export default defineConfig({
 
   // 国际化配置
   locales: {
-    zh: { label: '简体中文', link: '/zh/', ...zhConfig },
+    root: { label: '简体中文', link: '/', ...zhConfig },
     en: { label: 'English', link: '/en/', ...enConfig }
   },
 

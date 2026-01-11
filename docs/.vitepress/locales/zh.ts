@@ -4,41 +4,41 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
   lang: 'zh-CN',
   themeConfig: {
     nav: [
-      { text: '首页', link: '/zh/' },
-      { text: '开发', link: '/zh/development/redis-cache-uniformity' },
-      { text: '文章', link: '/zh/articles/' },
-      { text: '关于', link: '/zh/about/' },
+      { text: '首页', link: '/' },
+      { text: '开发', link: '/development/redis-cache-uniformity' },
+      { text: '文章', link: '/articles/' },
+      { text: '关于', link: '/about/' },
 
     ],
     sidebar: {
-      "/zh/development/": [
+      "/development/": [
         {
           text: '开发',
-          link: '/zh/development/',
+          link: '/development/',
           items: [
-            { text: 'Redis 缓存一致性', link: '/zh/development/redis-cache-uniformity' }
+            { text: 'Redis 缓存一致性', link: '/development/redis-cache-uniformity' }
           ]
         },
         {
           text: 'Spring Boot',
           items: [
-            { text: 'Spring Boot Starter 开发', link: '/zh/development/spring-boot/spring-boot-starter-dev' }
+            { text: 'Spring Boot Starter 开发', link: '/development/spring-boot/spring-boot-starter-dev' }
           ]
         }
       ],
-      "/zh/articles/": [
+      "/articles/": [
         {
           text: '文章',
-          link: '/zh/articles/',
+          link: '/articles/',
           items: [
-            { text: '千里之行', link: '/zh/articles/long-journey' }
+            { text: '千里之行', link: '/articles/long-journey' }
           ]
         }
       ],
-      "/zh/about/": [
+      "/about/": [
         {
           text: '关于',
-          link: '/zh/about/'
+          link: '/about/'
         }
       ]
     },
