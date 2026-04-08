@@ -26,14 +26,12 @@ jobs:
   # 构建工作
   build:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v5
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      - uses: pnpm/action-setup@v4 # 如果使用 pnpm，请取消此区域注释
+      - uses: pnpm/action-setup@v5 # 如果使用 pnpm，请取消此区域注释
         with:
           version: 10
       # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
@@ -44,13 +42,13 @@ jobs:
           cache: pnpm # 或 pnpm / yarn
           cache-dependency-path: pnpm-lock.yaml
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
       - name: Install dependencies
         run: pnpm install --frozen-lockfile # 或 pnpm install / yarn install / bun install
       - name: Build with VitePress
         run: pnpm docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: docs/.vitepress/dist
 
@@ -62,9 +60,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     name: Deploy
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
